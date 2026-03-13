@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Graph</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="workspace">
+      <section id="graph-screen" class="graph-screen">
+        <header class="toolbar toolbar-graph">
+          <nav id="breadcrumb" class="breadcrumb" aria-label="Graph path"></nav>
+        </header>
+        <div id="board" class="board" aria-label="Graph editor canvas">
+          <svg id="edges" class="edges" aria-hidden="true">
+            <defs>
+              <marker
+                id="arrowhead"
+                markerWidth="8"
+                markerHeight="8"
+                refX="6.4"
+                refY="4"
+                orient="auto-start-reverse"
+              >
+                <path d="M 0 0 L 8 4 L 0 8 z"></path>
+              </marker>
+            </defs>
+          </svg>
+          <div id="nodes" class="nodes"></div>
+        </div>
+      </section>
+
+      <section id="note-screen" class="note-screen is-hidden" aria-hidden="true">
+        <header class="toolbar toolbar-note">
+          <button id="note-back" class="back-button" type="button" aria-label="Back to graph">
+            <span aria-hidden="true">←</span>
+            <span>Back</span>
+          </button>
+          <div id="note-title" class="note-title"></div>
+        </header>
+        <div class="note-layout">
+          <section id="note-editor" class="note-editor" aria-label="Markdown note"></section>
+        </div>
+      </section>
+    </main>
+
+    <template id="node-template">
+      <div class="node" data-node>
+        <div class="node-menu" data-menu>
+          <button class="menu-icon" data-open-graph aria-label="Open subgraph">
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <circle cx="4" cy="4" r="1.5"></circle>
+              <circle cx="12" cy="4" r="1.5"></circle>
+              <circle cx="8" cy="12" r="1.5"></circle>
+              <path d="M5.5 4h5M5 5.2l2 4.3M11 5.2l-2 4.3"></path>
+            </svg>
+          </button>
+          <button class="menu-icon" data-open-note aria-label="Open note">
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M4 2.5h6l2 2v9H4z"></path>
+              <path d="M10 2.5v2h2"></path>
+              <path d="M6 7.25h4M6 9.25h4M6 11.25h3"></path>
+            </svg>
+          </button>
+          <button class="color-chip chip-sand" data-color="#d9dee6" aria-label="Sand"></button>
+          <button class="color-chip chip-coral" data-color="#bec7d6" aria-label="Coral"></button>
+          <button class="color-chip chip-sage" data-color="#93a0b5" aria-label="Sage"></button>
+          <button class="clear-chip" data-clear-color aria-label="Clear background">
+            <span></span>
+          </button>
+        </div>
+        <div class="node-body" data-body>
+          <span class="node-label" data-label></span>
+          <input class="node-input" data-input type="text" maxlength="80" />
+        </div>
+        <button class="connector" data-connector aria-label="Connect node"></button>
+      </div>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
