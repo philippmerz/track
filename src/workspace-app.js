@@ -115,6 +115,7 @@ export class WorkspaceApp {
     this.#noteEditor.setValue(node.note);
     this.#showNoteScreen();
     this.#saveState();
+    this.#noteEditor.focus();
   }
 
   #renderGraphView() {
